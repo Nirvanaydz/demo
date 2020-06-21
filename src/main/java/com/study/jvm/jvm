@@ -1,0 +1,23 @@
+1、jvm的架构模型：指令是基于栈式的架构，不同于基于cpu架构的寄存器架构，易移植，是零地址的栈方式，只有计数器存在
+2、jvm的生命周期：
+    虚拟机的启动 bootstrap class loader（引导类加载器） 创建一个初始化的类来加载
+    虚拟机的执行 一个程序执行过程就是一个虚拟机的执行
+    jvm翻译机： 解释器 ， JIT（即时编译器）：存储热点代码
+3、Java vm 的历史
+    sun classic vm
+    exact vm
+    sun hotspot vm 【important】
+        benefit ：
+            1、将热点代码，重复率使用高的代码编译到缓存区共享
+            2、可以使解释器和即时编译器JIT协同工作
+    BEA JRocket ： 专注于服务器端的应用
+        全靠JIT执行，是最快的jvm
+        mission control 监控工具
+    IBM J9
+        通用性低，只在自己的IBM环境上使用较为快捷和便利
+    KVM 和 CDC/CLDC hotspot 较为老旧的虚拟机
+
+    与硬件绑定，更好的性能 【应用场景有限】
+    azul vm
+    zing jvm
+    liquid vm 【基本停止开发】
