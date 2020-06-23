@@ -1,0 +1,18 @@
+类如何加载，分为三个阶段
+1、loading 加载阶段 ： 引导类 | 扩展类 | 系统类
+    生成大的实例对象 java.lang.Class 对象是在这一阶段完成的
+    详细过程：通过一个类的全限定名获取定义此类的字节流，
+            将字节流的静态存储结构转化为方法区的运行时数据结构，
+            在内存中生成一个代表这个类的大的clss对象，作为各种数据的访问入口
+2、linking 链接阶段 ： 验证 | 准备 | 解析
+    verify ： 确保字节流文件中信息符合jvm规范，文件标识：ca fe ba be 等等
+    prepare ： 为类变量分配内存，并设置该类变量的默认初始值，即零值。
+               不包含final static 修饰的是常量
+    resolve :
+3、initialize 初始化阶段 ： 执行类构造器方法<clinit>
+    加载静态代码变量和静态代码块，执行顺序按照字节码文件中的顺序来执行的，
+    该类为有父类，子类会在父类的init执行完再执行
+        参考 ClassInitTest1.java
+    必须保证一个类的<clinit>()方法在多线程下被同步加锁
+        参考 DeadThreadTest.java
+    若是违反规则，会出现Illegal forward reference
