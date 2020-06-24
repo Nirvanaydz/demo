@@ -12,6 +12,14 @@ public class ClassInitTest1 {
     }
 
     public static void main(String[] args) {
-        System.out.println(Son.B);
+//        System.out.println(Son.B);
+//        System.out.println(1+2+"java"+3+4);
+        int i=10;
+        if(i++ == 10){
+            ++i;
+        }else {
+            --i;
+        }
+        System.out.println(i);
     }
 }
