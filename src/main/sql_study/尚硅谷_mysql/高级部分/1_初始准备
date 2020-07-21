@@ -1,0 +1,20 @@
+1、rpm安装mysql
+2、下载dev.mysql.com中的5.5.48版本的客户端和服务端
+3、rpm -qa|grep -i mysql 查看是否安装了mysql
+4、rpm -ivh MySQL-server-5.5.48-1.linux2.6.x86_64.rpm
+安装服务端时出现文件报错，可以使用yum -y 冲突包 删除后就可以正常安装
+5、rpm -ivh MySQL-client-5.5.48-1.linux2.6.x86_64.rpm
+安装客户端
+6、启动和停止mysql
+service mysql start|stop|restart
+设置root密码
+/usr/bin/mysqladmin -u root password 123456
+7、设置开机启动
+chkconfig mysql on
+chkconfig --list|grep mysql
+查看启动开机自启动选项     ntsysv
+
+数据库文件存放位置       /var/lib/mysql                  ...pid
+配置文件目录                  /usr/share/mysql            mysql.server命令及配置文件
+指令目录                        /usr/bin                mysqladmin mysqldump等命令
+启停相关脚本                  /etc/init.d/mysql

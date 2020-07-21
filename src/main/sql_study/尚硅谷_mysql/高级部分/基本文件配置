@@ -1,0 +1,33 @@
+修改字符集
+mysql> show variables like '%char%';
++--------------------------+----------------------------+
+| Variable_name            | Value                      |
++--------------------------+----------------------------+
+| character_set_client     | utf8                       |
+| character_set_connection | utf8                       |
+| character_set_database   | latin1                     |
+| character_set_filesystem | binary                     |
+| character_set_results    | utf8                       |
+| character_set_server     | latin1                     |
+| character_set_system     | utf8                       |
+| character_sets_dir       | /usr/share/mysql/charsets/ |
++--------------------------+----------------------------+
+cp /usr/share/mysql/my-huge.cnf /etc/my.cnf
+后续版本升级会是my-default.cnf
+在/etc/my.cnf 中
+[client]
+加入default-character-set=utf8
+[mysqld]
+character-set-server=utf8
+character-set-client=utf8
+collation-server=utf8_general_ci
+[[mysql]
+default-character-set=utf8
+
+一些配置文件：
+主从复制
+慢查询日志
+执行错误日志
+frm 表结构
+myd 表数据
+myi 表索引
