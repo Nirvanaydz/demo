@@ -1,3 +1,0 @@
-1、需要手动安装MYSQL数据库，并建立好可视化工具，具体可以网上搜索，我使用的是在云服务器中创建MYSQL的docker容器，远程连接
-2、建表建库语句详见myemployees.sql文件
-3、我使用的可视化工具是jetbrains的DATAGRIP工具，大家可以参考
