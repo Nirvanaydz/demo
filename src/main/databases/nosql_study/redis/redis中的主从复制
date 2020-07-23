@@ -1,0 +1,18 @@
+主从配置，读写分离
+1、配从不配主
+2、一主二从
+3、薪火相传，主机1--从机1（slaveof 主机1）--从机2（slaveof 从机1）
+4、反客为主，薪火相传的情况下，主机1挂了，从机1中执行：slaveof no one
+5、哨兵sentinel模式(反客为主的自动版本)：新老大产生后旧的老大回来也只能是slave，变不成master
+    更新较慢
+    配置哨兵文件：sentinel monitor host6379 127.0.0.1 6379 1
+    启动哨兵模式：/opt/redis-6.0.6/src/redis-sentinel /myredis/sentinel.conf
+
+
+INFO replication 查询本机状态
+slaveof 主库ip 主库端口
+SLAVEOF 127.0.0.1 6379 从机订阅主机
+(error) READONLY You can't write against a read only replica.
+突发事故：
+    主机挂了：从机原地待命，主机活了后相当于什么都没发生
+    从机挂了：需要重新连接主机，然后继续变成一个read_only的从机

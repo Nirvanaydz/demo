@@ -1,0 +1,8 @@
+redis的持久化：同时开启先加载aof
+https://www.bilibili.com/video/BV1oW411u75R?p=18
+rdb，数据库文件.rdb存储，
+        异步保存，bgsave，无错误的时候支持继续写操作
+        堵塞保存save，save 900 1；save 120 10，save 60 10000
+https://www.bilibili.com/video/BV1oW411u75R?p=19
+aof：日志文件存储每个写操作，出问题启动check-aof --fix 文件.aof，默认保存形式为每秒everysec保存，
+        有时存储日志文件过大，redis会重写aof，文件相比于rdb文件较大，使用fsync策略，aof速度上慢于dmp文件

@@ -1,0 +1,5 @@
+可以使用redis写一个聊天室软件
+订阅多个频道：SUBSCRIBE c1 c2 c3
+订阅指令：
+    使用通配符的方式订阅多个：SUBSCRIBE news*
+在一个频道发布消息：PUBLISH c2 hello-redis
