@@ -1,0 +1,13 @@
+1、Java虚拟机栈也是线程独有，栈管理执行时信息，运行中伴随着入栈和出栈的操作
+2、通过单位栈帧stack frame存储方法
+3、栈，不存在gc，后进先出  todo 引入队列这种数据模式 先进先出
+4、栈溢出，
+    stackOverflowError:超出栈的最大容量
+    如何设置栈的最大容量 ：-Xss256k
+5、栈时怎么存储的：单位栈帧stack frame 每个方法对应一个栈帧
+6、栈帧具体是什么：内存区块|数据集
+    local variables | 局部变量
+    operand stack | 操作数栈
+    dynamic linking | 动态链接
+    return address | 方法返回地址
+7、ireturn、dreturn当存在异常且未被正常处理时，程序会报错异常停止，栈也会被弹出结束
