@@ -1,0 +1,60 @@
+1、linux的目录结构 不要操作/proc | /srv | /sys
+	/etc	放置*.conf等配置文件
+	/usr	类似于windows下的programfiles
+	/boot	重点：核心启动文件
+	/opt	本机用户安装软件的位置
+	
+	/dev	将磁盘存储以文件的形式保存
+	/media	媒体设备以文件形式存放
+	
+	/tmp	临时目录
+	
+	/proc	
+	/srv
+	/sys
+2、
+	2.1、setup指令介绍，如何打开ssh远程登录
+	
+	vi & vim  
+		正常模式  	vim xxx.log
+		编辑模式  	a/i
+		命令行模式	: / \/
+		快捷键案例	
+			拷贝当前行 yy 5yy复制本行及其下的五行
+			在当前行下粘贴你的copy p
+			删除当前行 dd 5dd删除本行及其下的五行
+			在文档中查找 /
+			显示行号  :set nu | :set nonu
+			最首行	  gg
+			最底行	  G
+			撤销操作  u
+			移动光标至某一行 先使用显示行号，然后输入指定行数，最后输入shift+g
+	开机重启指令：
+		shutdown
+			shutdown -h now
+			shutdown -h 1miu
+			shutdown -r now == reboot
+		halt 就是直接关机
+		reboot 重启
+		sync	将内存上的数据保存到磁盘上，防止数据丢失
+	用户的登录注销：
+		普通用户登录
+		使用sudo 再加指令
+		logout 结束当前的远程连接session，在图形界面中无效
+	用户管理操作：
+		用户至少属于一个组，也可以是多个组的
+		useradd [选项] user01 创建了一个user01用户和user01用户组
+			-d 指定home目录
+		passed 用户名称 给指定的用户新建密码
+		
+		userdel user01 只删除user01用户
+		userdel -r user01 删除user01用户且删除home directory和mail spool 一般不使用
+		
+		id user01 查询user01用户的信息
+		whoami 哪个用户操作这个session
+	用户组的管理：对一个组的管理
+		groupadd 用户组
+		usermod -g 用户组 用户名称 将某一个用户加到其他用户组中
+	用户配置文件 /etc/passwd username:x(passwd):uid:gid::home directory:bash
+	组配置文件 /etc/group		groupname:x(passwd):gid:组中的用户
+	口令配置文件，被加密 etc/shadow

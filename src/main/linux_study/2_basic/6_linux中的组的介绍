@@ -1,0 +1,11 @@
+6、linux中的组的介绍
+	文件显示：filetype-xxx-xxx-xxx
+	
+	chown root:root file
+	chown root file
+	chown -R root:root dir
+	
+	chgrp 改变所在组
+	chmod 改变文件的权限
+	 chmod +x file
+	 chmod 777 file 

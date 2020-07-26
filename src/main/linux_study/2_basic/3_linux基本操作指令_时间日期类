@@ -1,0 +1,6 @@
+3、时间日期类
+	3.1、date | date %Y  | date %m  |  date %d |date % H |date %M|date %S
+		设定系统时间： date -s 字符串时间
+	3.2、cal
+		cal 显示当月
+		cal 2020 查看2020年的整年日历

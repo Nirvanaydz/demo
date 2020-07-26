@@ -1,0 +1,12 @@
+4、搜索查找[grep 待补充]
+	4.1、find
+		find /home -name hello.txt [通配符的使用得加深]
+		find /home -user nobody
+		find /home -user root 查找某一个目录下的root用户权限的文件
+		find /opt  -size +20M 查找opt目录下的大于20M的文件，-小于，直接写n就是等于
+	4.2、locate 快速定位文件路径，根据locate数据库来查询
+		使用前需要updatedb来创建locate数据库
+		直接使用 locate 文件名称
+	4.3、grep 管道
+		-n 显示匹配行及行号
+		-i 忽略大小写

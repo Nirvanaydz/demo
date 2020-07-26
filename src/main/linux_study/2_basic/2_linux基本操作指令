@@ -1,0 +1,44 @@
+基本操作指令：
+	1、运行级别：7个 0-6 将id:5:initdefault
+		0 关机
+		1 单用户
+		2 多用户无网络
+		3 多用户有网络
+		4 保留
+		5 图形界面
+		6 系统重启
+		在/etc/inittab中存放着运行级别配置文件
+		不可以远程操作，只可以默认服务器就在手边
+		忘记root密码怎么修改：进入单用户模式（此模式下不需要密码就可以登录root），然后执行passwd执行修改密码的操作
+		p22 18:00 时间段 如何进入单用户模式
+		开机在引导时，输入回车键
+		在界面中输入e，在keneral中设置编辑，输入e，在这行的最后输入1，然后输入回车键
+		最后再次输入b代表进入boot启动，然后进入单用户模式，passwd来修改用户密码就可以了
+	2、ls cd pwd | mkdir rmdir | touch cp | rm mv
+	3、cat more less
+		cat -n filename 只读模式，-n表示显示行号
+			cat -n filename|more
+		more的使用：
+			enter 向下一行
+			space 向下一页
+			q	  quit退出
+			Ctrl+b/f 向上before下floor滚动一屏
+			=	  输出当前行号
+			:f    输出当前文件名称和行号
+		less更加强大：不是一次性读取文件，而是按需读取文件
+			space==pagedown
+			pageup
+			/字符串  向下查询 	n继续查询并显示下一个结果 shift+n继续查询并显示下一个结果
+			？字符串 向上查询 	n继续查询并显示下一个结果 shift+n继续查询并显示下一个结果
+			q     quit退出
+	4、输出重定向>    |     追加指令>>
+		重定向：覆盖写文件
+		追加：不会覆盖，而是在文件的后面继续写
+		echo a.txt >> b.txt
+		cat a.txt >> b.txt
+	5、echo $PATH |  head -n filename
+	6、tail -f filename 实时查看
+	7、ln 软连接|符号链接|快捷方式
+		ln -s 源文件或者目录 软连接名称
+		
+		history 查看已经执行过的历史指令 !178执行编号为178的指令

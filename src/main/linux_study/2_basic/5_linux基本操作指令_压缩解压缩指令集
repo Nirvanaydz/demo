@@ -1,0 +1,14 @@
+5、压缩解压缩指令集
+	gzip|gunzip
+		gzip压缩后原文件直接转换成.gz结尾的文件，不保留原来的文件
+		
+	zip|unzip
+		zip 	[option] xxx.zip neededzipfile
+			zip -r myhome.zip /home/
+			
+		unzip	[option] xxx.zip
+			unzip -d /opt/tmp/ xxx.zip
+			
+	tar 打包指令
+		tar -zcvf xxx.gz a.txt b.txt
+		tar -zxvf  xxx xxx.tar.gz -C 指定的解压到的目录[事先要存在]
