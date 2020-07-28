@@ -1,0 +1,21 @@
+6、linux中的组的介绍
+	文件显示：filetype-xxx-xxx-xxx
+	
+	chown root:root file
+	chown root file
+	chown -R root:root dir
+	
+	chgrp 改变所在组
+	chmod 改变文件的权限
+	 chmod +x file
+	 chmod 777 file
+7、linux中的权限说明
+    filetype-xxx-xxx-xxx
+    在文件中的rwx
+    r : 可读取和查看
+    w : 可以修改但不可以删除，除非对该文件的目录有写权限才可以删除其下的子文件
+    x : 可执行
+    在目录中的说明
+    r : ls查看目录结构
+    w : 可以在目录中创建删除和重命名目录
+    x : 可执行，可以cd到此目录下

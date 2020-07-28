@@ -1,0 +1,31 @@
+8、cron的定时任务调度
+    定时的调用写好的脚本
+
+    crontab -e 编辑定时任务
+    crontab -l 查询任务调度
+    crontab -f 删除当前用户所有的crontab任务
+
+    备注：简单的任务可以直接crontab + 执行的任务
+            步骤：
+                1、执行crontab -e
+                2、在对话框中输入指定的定时任务如：
+                    */1 * * * * ls -l /tmp >> /opt/lstest.txt
+                3、保存退出即可，若出现以下两种报错，处理方式如下：
+                第一种：rename: Is a directory，删除/var/spool/cron/root中的root文件夹
+                第二种：rename: Operation not permitted，无权限，chattr -i 报错文件，将不允许修改的权限去除即可
+                         lsattr 查看文件权限
+                         chattr 修改文件权限
+         较为复杂的任务写shell脚本编辑即可
+            步骤：
+                1、先创建执行脚本/opt/mytask01.sh，在执行脚本中写入执行语句 ls -l /tmp >> /opt/lstest.txt
+                1、执行crontab -e
+                2、在对话框中输入指定的定时任务如：
+                    */1 * * * * /opt/mytask01.sh
+                3、保存退出即可，若出现以下两种报错，处理方式如下：
+                第一种：rename: Is a directory，删除/var/spool/cron/root中的root文件夹
+                第二种：rename: Operation not permitted，无权限，chattr -i 报错文件，将不允许修改的权限去除即可
+                         lsattr 查看文件权限
+                         chattr 修改文件权限
+     示例：每天凌晨两点将mysql的testdb数据库备份到文件mydb.bak
+            /usr/bin/mysqldump -uroot -p123456 testdb > /tmp/mydb.bak
+
