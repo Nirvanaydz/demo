@@ -1,0 +1,36 @@
+12、linux中的网络配置
+    https://www.bilibili.com/video/BV1dW411M7xL?p=45
+
+13、
+    如何自动获取自动连接[自动获取外网连接]
+    缺点：自动获取的ip每次会不一样，不适用于做服务器，因为服务器的ip是固定的
+
+    指定固定ip地址
+    vi /etc/sysconfig/network-scripts/ifcfg-eth0[多块网卡时，存在eth1,eth2...]
+        ONBOOT=yes                  启用boot去获取IP
+        BOOTPROTO=static            以静态的方式获取IP
+        IPADDR=192.168.184.130      指定IP
+        GATEWAY=192.168.184.2       指定网关
+        DNS1=192.168.184.2          指定DNS转发，和网关保持一致即可
+
+        TYPE=Ethernet
+        PROXY_METHOD=none
+        BROWSER_ONLY=no
+        BOOTPROTO=static
+        DEFROUTE=yes
+        IPV4_FAILURE_FATAL=no
+        IPV6INIT=yes
+        IPV6_AUTOCONF=yes
+        IPV6_DEFROUTE=yes
+        IPV6_FAILURE_FATAL=no
+        IPV6_ADDR_GEN_MODE=stable-privacy
+        NAME=ens33
+        UUID=da4fa208-7807-4f66-8609-c04b3673acdc
+        DEVICE=ens33
+        ONBOOT=yes
+        IPADDR=192.168.184.129
+        GATEWAY=192.168.184.2
+        DNS=192.168.184.2
+
+
+    重启network：service network restart

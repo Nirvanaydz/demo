@@ -1,0 +1,43 @@
+9、linux中的磁盘分区和挂载
+    9.1、分区的概念：mbr，gtp
+    mbr:
+        最多支持四个主分区
+        系统只能安装在主分区上
+        扩展分区要占一个主分区
+        MBR最大只支持2TB，但拥有很好地兼容性
+    gtp
+        理论上支持无限多个主分区，但是操作系统的限制可能会对个数产生影响，如windows最多支持128个分区
+        最大支持18EB的容量 1EB = 1024 * PB = 1014 * 1024 TB = 1014 * 1024 * 1024 GB
+        windows7 64位后支持gtb
+
+    9.2、分区理论知识
+        windows怎么分区可以点击本电脑，右击后选择管理，选择磁盘分区，主分区 | 逻辑分区（扩展分区1|扩展分区2|扩展分区3）
+
+        linux分区：
+            磁盘（硬盘）---------linux文件系统
+            挂载和卸载:将磁盘分区从linux文件系统中挂载和卸载
+            1、linux中如何对硬盘分类【IDE|SCSI】
+            IDE：    hd-x-数字键:x代表哪一块一盘，数字键代表这一块磁盘的哪一个分区
+            SCSI：   sd-x-数字键:x代表哪一块一盘，数字键代表这一块磁盘的哪一个分区
+
+            [root@localhost ~]# lsblk -f
+            分区情况         分区类型            不重复的40位字符串，唯一标识符               挂载点
+            NAME            FSTYPE      LABEL UUID                                   MOUNTPOINT
+            sda
+            ├─sda1          xfs               ec69e99e-5bad-4ce4-9511-db843f41fa3d   /boot
+            └─sda2          LVM2_member       uaghDO-BYzP-RLM1-IKuS-mUsP-yQlT-T7OebY
+              ├─centos-root xfs               b6e594a6-b934-4fba-b5bb-cb5c9e23b898   /
+              └─centos-swap swap              5a564508-2398-4f0e-8460-71020c161c36   [SWAP]
+            sr0
+    9.3、给linux系统挂载一块硬盘
+        案例：将新增的硬盘挂载到/home/newdisk下
+        五部曲：
+            虚拟机添加硬盘
+            分区          fdisk /dev/sdb
+            格式化         mkfs -t ext4 /dev/sdb1
+            挂载          mount /dev/sdb1 /home/newdisk   该指令只是临时挂载，系统重启后就会消失
+            设置可自动挂载（永久挂载）打开/etc/fstab(记录分区挂载点的信息)
+                添加上下面这段设置即可
+                UUID=97be6928-3ed8-4884-9b84-d3244f05f4bd /home/newdisk           ext4    defaults        0 0
+            取消挂载：unmount /dev/sdb1
+

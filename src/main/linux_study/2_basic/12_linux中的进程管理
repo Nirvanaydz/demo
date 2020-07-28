@@ -1,0 +1,19 @@
+14、linux中的进程管理
+
+查询：
+    -a  显示所有的进程号
+    -u  显示用户信息
+    -x  显示后台进程运行的参数
+    -e  全格式，可以显示ppid，对应的就是其父进程
+    [root@localhost bin]# ps -aux|head -n 5
+    用户名        进程号              虚拟内存     物理内存          终端机号  状态         消耗cpu时间  正在执行的命令或者进程名称
+    USER        PID     %CPU %MEM    VSZ        RSS             TTY      STAT START   TIME       COMMAND
+    root          1     0.0  0.6 128160         6752            ?        Ss   06:43   0:01       /usr/lib/systemd/systemd --switched-root --system --deserialize 22
+    root          2     0.0  0.0      0         0               ?        S    06:43   0:00       [kthreadd]
+    root          4     0.0  0.0      0         0               ?        S<   06:43   0:00       [kworker/0:0H]
+    root          5     0.0  0.0      0         0               ?        S    06:43   0:00       [kworker/u256:0]
+
+终止：
+    kill -9 pid  强制杀死一个进程
+    killall ppid 杀死父进程，其子进程都会被杀死
+

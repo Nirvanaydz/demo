@@ -1,0 +1,21 @@
+11、linux中实用指令
+    1、查询/opt/module/zookeeper-3.4.14/目录下的 文件 个数
+        ll /opt/module/zookeeper-3.4.14/ | grep "^-" | wc -l
+    2、查询/opt/module/zookeeper-3.4.14/目录下的 目录 个数
+        ll /opt/module/zookeeper-3.4.14/ | grep "^d" | wc -l
+    3、统计/opt目录下及其所有子文件夹下的 目录个数
+        ls -lR /opt/ | grep "^d" | wc -l
+    4、使用tree 查看指定目录的树状图
+    [root@VM-0-3-centos /]# tree /opt/linux_study/
+    /opt/linux_study/
+    |-- hello
+    |   |-- hello01.txt
+    |   |-- hello.txt
+    |   `-- testcrontab.sh
+    |-- hello01.txt
+    |-- hello.tar.gz
+    |-- hello.txt
+    |-- myhome.tar.gz
+    `-- mytask1.sh
+
+    1 directory, 8 files

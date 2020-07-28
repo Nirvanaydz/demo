@@ -1,0 +1,26 @@
+17、linux中的包的安装
+    rpm/yum
+
+    rpm----------【示例安装firefox浏览器并卸载】
+    查询已经安装的rpm列表
+        rpm -qa | grep xx
+    卸载
+        rpm -e rpm包名称 报被其他软件使用时会报错，如果不管这个影响一定要删除则使用--nodeps
+        rpm -e --nodeps rpm包名称
+
+    安装
+        rpm -ivh rpm包路径名称
+        i install 确认安装
+        v verbose 提示信息
+        h hash 有进度条显示
+    yum----------
+    查询
+        yum list|grep xxx
+    安装
+        yum install xxx
+
+    示例：安装java和Tomcat，启动服务后，让防火墙打开8080端口
+    1、设置 vim /etc/sysconfig/iptables加入-A INPUT -m state --state NEW -m tcp -p tcp --dport 8161 -j ACCEPT
+        或者手动执行：
+        iptables -A INPUT -m state --state NEW -m tcp -p tcp --dport 8161 -j ACCEPT
+    2、最后重启防火墙

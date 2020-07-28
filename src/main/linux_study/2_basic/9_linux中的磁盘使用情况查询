@@ -1,0 +1,55 @@
+10、linux中的磁盘使用情况查询 df -h
+
+    du -ach --max-depth=1 /opt
+
+    [root@localhost ~]# df -lh
+    Filesystem               Size  Used Avail Use% Mounted on
+    devtmpfs                 475M     0  475M   0% /dev
+    tmpfs                    487M     0  487M   0% /dev/shm
+    tmpfs                    487M  7.7M  479M   2% /run
+    tmpfs                    487M     0  487M   0% /sys/fs/cgroup
+    /dev/mapper/centos-root   17G  2.2G   15G  13% /
+    /dev/sda1               1014M  137M  878M  14% /boot
+    tmpfs                     98M     0   98M   0% /run/user/0
+    /dev/sdb1                2.0G  6.0M  1.9G   1% /home/newdisk
+
+    查询指定目录的磁盘占用情况
+    -h  带计量单位的显示
+    查看/home/下的所有目录(含递归子目录)使用情况
+    [root@localhost ~]# du -h /home/
+    36M     /home/yudazhi
+    16K     /home/newdisk/lost+found
+    20K     /home/newdisk
+    36M     /home/
+
+    -s  只看本目录，不含子目录
+    [root@localhost ~]# du -hs /home/
+    36M     /home/
+
+    -a  将子目录和子文件一起显示
+    [root@localhost ~]# du -ha /home/
+    4.0K    /home/yudazhi/.bash_logout
+    4.0K    /home/yudazhi/.bash_profile
+    4.0K    /home/yudazhi/.bashrc
+    36M     /home/yudazhi/zookeeper-3.4.14.tar.gz
+    36M     /home/yudazhi
+    16K     /home/newdisk/lost+found
+    20K     /home/newdisk
+    36M     /home/
+
+    --max-depth=x   设置子目录显示深度
+    [root@localhost ~]# du -h --max-depth=1 /opt/
+    61M     /opt/module
+    71M     /opt/apache-activemq-5.16.0
+    191M    /opt/
+
+    -c  列出此目录的占用情况。total
+    [root@localhost ~]# du -hc --max-depth=1 /opt/
+    61M     /opt/module
+    71M     /opt/apache-activemq-5.16.0
+    191M    /opt/
+    191M    total
+
+
+
+

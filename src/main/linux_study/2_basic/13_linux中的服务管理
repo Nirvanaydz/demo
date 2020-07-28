@@ -1,0 +1,17 @@
+15、linux中的服务管理
+    service service-name start|stop|restart|reload|status
+    systemctl centos7.0之后service改为systemctl
+
+    使用其指令只是暂时的，重启后就会恢复默认
+    对服务的运行级别的说明0-6个级别
+
+    可以通过chkconfig检查参数是否可以开机启动
+        查看服务运行级别：
+            chkconfig --list | grep xxx
+        设置在level-num运行级别下打开或者关闭某一个服务：
+            chkconfig --level level-num service-name on/off
+    setup打开系统设置，或者sys
+
+    windows中检查linux中服务器是否开启的端口：telnet ip port
+    控制面板\程序\程序和功能 选择左边的启用或关闭windows功能，找到telnets client 打开此功能
+
