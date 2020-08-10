@@ -1,0 +1,31 @@
+main：JMS-producer send JMS-message to JMS-consumer by JMS-provider
+1、消息的组成与其特点
+JMS-provider   ---   activemq，rocketmq，kafka...
+JMS-message    ---   消息头，消息属性，消息体
+消息头：
+    JMSDestination：消息目的地
+    JMSDeliveryMode：消息持久化模式
+    JMSExpiration：消息过期时间
+    JMSPriority：消息的优先级
+    JMSMessageID：消息的唯一标识符。后面我们会介绍如何解决幂等性。
+    说明：	消息的生产者可以set这些属性，消息的消费者可以get这些属性。
+    这些属性在send方法里面也可以设置。
+消息属性：除了消息头之外的其他需要标注的信息，识别，去重，重点标注【对一些需要特殊处理的消息进行标注】
+消息体：session.create..Message    map,text通用，其余了解即可
+
+2.1、如何保证消息的可靠性？todo
+    队列默认    是持久化的PERSISTENT producer.setDeliveryMode(DeliveryMode.PERSISTENT);
+    TOPIC 很重要
+2.2、事务transaction偏生产 | 签收acknowledge偏消费  【主要关注是否重复消费】
+https://www.bilibili.com/video/BV164411G7aB?p=30
+https://www.bilibili.com/video/BV164411G7aB?p=31
+    生产者侧如何开启事务，为什么需要开启事务
+        开启事务的话需要在事务关闭前，消息发送后进行commit提交操作，否则队列中将没有消息
+        事务的好处，失败可以回滚
+       消费者侧session设置了true，需要提交，不然会造成消息的重复消费！！！
+    消费者侧如何开启签收以及在开启事务和未开启事务时需要注意的事项
+        非事务的方式：
+            手动签收需要调用receive.acknowledge();方法来完成签收
+        事务开启的情况下
+            如果消费者以事务的方式提交，签收的方式是什么默认都是自动签收
+            如果消费者以事务的方式未提交，不管是否签收，都出现重复消费
