@@ -1,0 +1,15 @@
+2、点对点模式和发布订阅模式的api使用
+2.1、点对点 队列 模式
+    factory--connection--session--producer--sendMessage--close
+    factory--connection--session--consumer--receiveMessage--close
+
+    消费方式：
+        1、receive | receive(timeout)
+        2、setMessageListener(new MessageListener() {...});
+2.2、发布订阅的模式
+    有时间上的相关性：后来的消费者不能消费之前发布的信息
+    先消费者订阅，再进行生产者发布消息：无订阅时消息是废消息
+
+    每个消费者都可以接受到订阅生产的全部消息
+2.3、比较：
+    工作模式        有无状态        传递的完整性      处理效率

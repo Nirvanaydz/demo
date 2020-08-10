@@ -20,4 +20,7 @@
     lsof -i:61616
     netstat -apn|grep 61616
 5、前台界面登录：
+    linux关闭防火墙，telnet测试端口等
+    远程服务器需要修改jetty.xml中的设置，将127.0.0.1改为0.0.0.0才可以对外开发8161端口
     http:ip:8161/admin
+    Number Of Pending Messages  	Number Of Consumers  	Messages Enqueued  	Messages Dequeued
