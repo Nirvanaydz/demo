@@ -1,0 +1,3 @@
+前言：指定特定的配置文件activemq-personal.xml启动activemq
+./activemq start xbean:file:/opt/apache-activemq-5.16.0/conf/activemq-personal.xml
+较少使用的broker
