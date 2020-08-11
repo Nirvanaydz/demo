@@ -1,4 +1,4 @@
-package com.study.activemq.improve.broker;
+package com.study.activemq.broker;
 
 import org.apache.activemq.broker.BrokerService;
 
