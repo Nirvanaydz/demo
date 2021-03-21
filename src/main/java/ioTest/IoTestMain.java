@@ -1,82 +1,86 @@
 package ioTest;
 
-import org.apache.commons.lang3.RandomUtils;
-import util.IOUtil;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.RandomUtils;
 
 /**
  * java中的IO学习
- * */
-public class IOTestMain {
-    public static final String filePath = "C:\\code\\demo\\src\\main\\java\\ioTest\\1.txt";
+ * @author yudazhi
+ */
+@Slf4j
+public class IoTestMain {
+    public static final String FILE_PATH = "C:\\code\\demo\\src\\main\\java\\ioTest\\1.txt";
     public static void main(String[] args) {
-        new IOTestMain().fullWriteByByte();
+        new IoTestMain().fullWriteByByte();
     }
 
-    /*
-    * 字节流的方式单次读取，使用字节流的方式直接将read的值转换成int，标准写法
-    * */
+    /**
+     * 字节流的方式单次读取，使用字节流的方式直接将read的值转换成int，标准写法
+     */
     private void singleReadByInt() {
         int result = 0;
         FileInputStream fileInputStream = null;
         try {
-            File file = new File(filePath);
+            File file = new File(FILE_PATH);
             fileInputStream = new FileInputStream(file);
             result = fileInputStream.read();
-            System.out.println(result);
+            log.info("read line is : {}", result);
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("singleReadByInt >>> e :", e);
         } finally {
-            IOUtil.closeInputStreamIO(fileInputStream);
+            IOUtils.closeQuietly(fileInputStream);
         }
     }
-    /*
-    * 字节流的方式多次读取文件
-    * */
+
+    /**
+     * 字节流的方式多次读取文件
+     */
     private void fullReadByInt() {
         int value = 0;
         FileInputStream fileInputStream = null;
         try {
-            File file = new File(filePath);
+            File file = new File(FILE_PATH);
             fileInputStream = new FileInputStream(file);
             while (-1 != (value = fileInputStream.read())){
-                System.out.println(value);
+                log.info("read line is : {}", value);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("fullReadByInt >>> e :", e);
         } finally {
-            IOUtil.closeInputStreamIO(fileInputStream);
+            IOUtils.closeQuietly(fileInputStream);
         }
     }
-    /*
+
+    /**
      * 字符流的方式读取文件，速度快
-     * */
+     */
     private void fullReadByByte() {
         int value = 0;
         FileInputStream fileInputStream = null;
         try {
-            File file = new File(filePath);
+            File file = new File(FILE_PATH);
             fileInputStream = new FileInputStream(file);
             // 不同之处
             byte[] bt = new byte[1024];
             while (-1 != (value = fileInputStream.read(bt))){
                 String s = new String(bt,0,value);
-                System.out.println(s);
+                log.info("read line is : {}", s);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("fullReadByByte >>> e :", e);
         } finally {
-            IOUtil.closeInputStreamIO(fileInputStream);
+            IOUtils.closeQuietly(fileInputStream);
         }
     }
 
-    /*
-    * 输出流
-    * */
+    /**
+     * 输出流
+     */
     private void fullWriteByByte() {
         FileOutputStream fileOutputStream = null;
         try {
@@ -85,9 +89,9 @@ public class IOTestMain {
             // 不同之处
             fileOutputStream.write("没有绝对的绝缘体，只有不努力的电压".getBytes());
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("fullWriteByByte >>> e :", e);
         } finally {
-            IOUtil.closeOutputStreamIO(fileOutputStream);
+            IOUtils.closeQuietly(fileOutputStream);
         }
     }
 
