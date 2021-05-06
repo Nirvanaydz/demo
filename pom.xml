@@ -16,7 +16,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-		<vaadin.version>14.1.16</vaadin.version>
+		<vaadin.version>14.5.3</vaadin.version>
 	</properties>
 
 	<dependencies><!-- 依赖的根元素，默认为groupId、artifactId、version，版本号省略时代表默认使用最新的版本 -->
